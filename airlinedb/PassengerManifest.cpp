@@ -116,7 +116,6 @@ int main() {
 			}else{
 				cerr<<"You have entered an invalid flight number";
 			}
-							//call list function in orderedlist.h
 		}else if((userOption == 'Q') || (userOption == 'q')){
 			cout<<"You have decided to Quit"<<endl;
 		}else{
