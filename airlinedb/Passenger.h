@@ -79,7 +79,7 @@ bool operator>(Passenger& p1, Passenger& p2){
 }
 
 ostream& operator<<(ostream& os, Passenger& p){
-	cout<<p.getFirstName()<<" " <<p.getLastName()<<" "<<p.getAdress()<<" +1"<<p.getPhoneNumber()<<" ";
+	cout<<p.getFirstName()<<" " <<p.getLastName()<<" ["<<p.getAdress()<<"] [+1"<<p.getPhoneNumber()<<"]";
 	return os;
 }
 

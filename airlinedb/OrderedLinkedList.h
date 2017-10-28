@@ -22,6 +22,11 @@ void OrderedLinkedList<T>::insert(T& item){
 	newNode->next = LinkedList<T>::head;
 	node<T> *temp = LinkedList<T>::head;
 	LinkedList<T>::head = newNode;
+//******************
+//Find solution to alphabetizing nodes by last name
+//Below are some initial attempts that aren't working
+//******************
+
 //	cout<<"Not entering While Loop"<<endl;
 //	while(temp != NULL){
 //		cout<<"temp != NULL";

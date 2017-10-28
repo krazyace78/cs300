@@ -6,7 +6,6 @@ using namespace std;
 
 
 int main() {
-//	Passenger p1("John", "Walker", "1234 NE 59th st", "206-779-9845");
 	OrderedLinkedList<Passenger> flight100;
 	OrderedLinkedList<Passenger> flight200;
 	OrderedLinkedList<Passenger> flight300;
@@ -32,7 +31,6 @@ int main() {
 			cin.ignore(1000, '\n');
 			getline(cin, address);
 			address[address.length()-1] = '\0';
-			//cin is ignoring spaces and jumps to next line if it encounters a space.
 			cout<<"Enter phone number: ";
 			cin>>phoneNumber;
 			Passenger p(firstName, lastName, address, phoneNumber);
@@ -45,8 +43,6 @@ int main() {
 			}else if(flightNumber == "400"){
 				flight400.insert(p);
 			}
-//			cout<<flight100;
-
 
 //Ask user for last name and first name
 //Search all flights for passenger
@@ -59,7 +55,16 @@ int main() {
 			cin>>firstName;
 			Passenger searchPassenger(lastName, firstName);
 
-//if statement, return true if something is true?
+
+			flight100.searchList(searchPassenger);
+			flight200.searchList(searchPassenger);
+			flight300.searchList(searchPassenger);
+			flight400.searchList(searchPassenger);
+//******************************
+//Implement loop instead of calling the searchList function 4 times
+//******************************
+
+
 //			if(flight100.searchList(searchPassenger) == true){
 //				break;
 //			}else if(flight200.searchList(searchPassenger) == true){
@@ -69,10 +74,6 @@ int main() {
 //			}else if(flight400.searchList(searchPassenger) == true){
 //				break;
 //			}
-			flight100.searchList(searchPassenger);
-			flight200.searchList(searchPassenger);
-			flight300.searchList(searchPassenger);
-			flight400.searchList(searchPassenger);
 
 
 
