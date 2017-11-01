@@ -10,17 +10,15 @@ int main() {
 	OrderedLinkedList<Passenger> flight200;
 	OrderedLinkedList<Passenger> flight300;
 	OrderedLinkedList<Passenger> flight400;
-	cout<<endl;
 
 	char userOption;
+	string flightNumber, firstName, lastName, address, phoneNumber;
 	cout<<"***DELTA AIRLINES***"<<endl;
 	cout<<"Please choose an operation:"<<endl;
 	cout<<"A(Add) | S(Search) | D(Delete) | L(List) | Q(Quit): ";
 	cin>>userOption;
-	string flightNumber, firstName, lastName, address, phoneNumber;
 	do{
 		if((userOption == 'A') || (userOption == 'a')){
-			cout<<"You chose to Add"<<endl;
 			cout<<"Enter flight number: ";
 			cin>>flightNumber;
 			cout<<"Enter first name: ";
@@ -48,6 +46,7 @@ int main() {
 //Search all flights for passenger
 //Print passenger's flight # along with passenger info
 		}else if((userOption == 'S') || (userOption == 's')){
+			bool flag = true;
 			cout<<"You chose to Search"<<endl;
 			cout<<"Enter last name: ";
 			cin>>lastName;
@@ -55,26 +54,32 @@ int main() {
 			cin>>firstName;
 			Passenger searchPassenger(lastName, firstName);
 
+//			Passenger p2 = flight100.searchList(searchPassenger);
 
 			flight100.searchList(searchPassenger);
+//			cout<<p2;
 			flight200.searchList(searchPassenger);
 			flight300.searchList(searchPassenger);
 			flight400.searchList(searchPassenger);
 //******************************
 //Implement loop instead of calling the searchList function 4 times
 //******************************
-
-
-//			if(flight100.searchList(searchPassenger) == true){
-//				break;
-//			}else if(flight200.searchList(searchPassenger) == true){
-//				break;
-//			}else if(flight300.searchList(searchPassenger) == true){
-//
-//			}else if(flight400.searchList(searchPassenger) == true){
-//				break;
+//			while(flag){
+//				if(flight100.searchList(searchPassenger)){
+//					Passenger p2 =
+//					cout<<"Flight number: 100"<<endl;
+//					flag = false;
+//				}else if(flight200.searchList(searchPassenger)){
+//					cout<<"Flight number: 200"<<endl;
+//					flag = false;
+//				}else if(flight300.searchList(searchPassenger)){
+//					cout<<"Flight number: 300"<<endl;
+//					flag = false;
+//				}else if(flight400.searchList(searchPassenger)){
+//					cout<<"Flight number: 400"<<endl;
+//					flag = false;
+//				}
 //			}
-
 
 
 //Ask user to input flight number

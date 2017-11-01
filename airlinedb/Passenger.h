@@ -32,7 +32,8 @@ public:
 	string getAdress();
 	void setPhoneNumber(string);
 	string getPhoneNumber();
-	friend bool operator>(Passenger&, Passenger&);
+	friend bool operator==(Passenger&, Passenger&);
+	friend bool operator<(Passenger&, Passenger&);
 	friend ostream& operator<<(ostream&, Passenger&);
 	friend bool operator!=(Passenger&, Passenger&);
 };
@@ -62,19 +63,17 @@ string Passenger::getPhoneNumber(){
 	return phoneNumber;
 }
 
-bool operator>(Passenger& p1, Passenger& p2){
-	for(int i = 0; i < fmax(p1.getLastName().length(), p2.getLastName().length()); i++){
-		while(p1.getLastName()[i] != p2.getLastName()[i]){
-			if(p1.getLastName()[i] > p2.getLastName()[i]){
-				return true;
-			}
-		}
-		while(p1.getLastName()[i] == p2.getLastName()[i]){
-			i++;
-			if(p1.getLastName()[i] < p2.getLastName()[i]){
-				return false;
-			}
-		}
+//bool operator==(Passenger& p1, Passenger& p2){
+//	if((p1.getLastName() == p2.getLastName()) && (p1.getFirstName() == p2.getFirstName()){
+//
+//	}
+//}
+
+bool operator<(Passenger& p1, Passenger& p2){
+	if(p1.getLastName()[0] < p2.getLastName()[0]){
+		return true;
+	}else{
+		return false;
 	}
 }
 
@@ -89,11 +88,11 @@ bool operator!=(Passenger& p1, Passenger& p2){
 		return true;
 	}
 //Unclear on how to print out passenger flight #
-	cout<<"Flight number: "<<endl;
-	cout<<"First name: "<<p1.getFirstName()<<endl;
-	cout<<"Last name: "<<p1.getLastName()<<endl;
-	cout<<"Address: "<<p1.getAdress()<<endl;
-	cout<<"Phone number: "<<p1.getPhoneNumber()<<endl;
+//	cout<<"Flight number: "<<endl;
+//	cout<<"First name: "<<p1.getFirstName()<<endl;
+//	cout<<"Last name: "<<p1.getLastName()<<endl;
+//	cout<<"Address: "<<p1.getAdress()<<endl;
+//	cout<<"Phone number: "<<p1.getPhoneNumber()<<endl;
 	return false;
 }
 

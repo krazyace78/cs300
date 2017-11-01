@@ -10,92 +10,68 @@ template <class T>
 class OrderedLinkedList: public LinkedList<T>{
 	public:
 		void insert(T&);
-//		void deleteNode(T&);
-		bool searchList(T&);
+		void deleteNode(T&);
+//		bool searchList(T&);
+		T& searchList(T&);
 };
 
 
 template <class T>
 void OrderedLinkedList<T>::insert(T& item){
 	node<T> *newNode = new node<T>;
+	node<T> *p, *q;
 	newNode->data = item;
-	newNode->next = LinkedList<T>::head;
-	node<T> *temp = LinkedList<T>::head;
-	LinkedList<T>::head = newNode;
-//******************
-//Find solution to alphabetizing nodes by last name
-//Below are some initial attempts that aren't working
-//******************
-
-//	cout<<"Not entering While Loop"<<endl;
-//	while(temp != NULL){
-//		cout<<"temp != NULL";
-//		if(newNode->data > temp->data){
-//			newNode = temp;
-//			temp = temp->next;
-//			cout<<"Temp != NULL";
-//	////	return true if not alphabetical
-//		}else if(temp == NULL){
-//			newNode->next = LinkedList<T>::head;
-//			LinkedList<T>::head = newNode;
-//			cout<<"Temp == NULL";
-//		}else{
-//			temp->next = newNode;
-//			newNode->next = temp;
-//		}
-//	}
-//	if(temp==NULL){
-//		temp = newNode;
-//		cout<<"temp = newNode"<<endl;
-//	}
-
-
-//	node<T> *newNode = new node<T>;
-//	newNode->data = item;
-//	newNode->next = LinkedList<T>::head;
-//	LinkedList<T>::head = newNode;
-//	node<T> *temp = LinkedList<T>::head;
-//	node<T> *temp2 = NULL;
-//	cout<<"Not entering While Loop"<<endl;
-//	while(temp != NULL){
-//		if(temp->data > item){
-//			temp2 = temp;
-//			temp = temp->next;
-//			cout<<"Temp != NULL";
-//////	return true if not alphabetical
-//		}else if(temp2 == NULL){
-//			newNode->next = LinkedList<T>::head;
-//			LinkedList<T>::head = newNode;
-//			cout<<"Temp == NULL";
-//		}else{
-//			temp2->next = newNode;
-//			newNode->next = temp;
-//		}
-
-	//return false and move node into correct place
-	//			temp = temp->next;
-//	}
-//	if(LinkedList<T>::last==NULL){
-//		LinkedList<T>::last = newNode;
-//		cout<<"Last node = newNode"<<endl;
-//	}
+	newNode->next = NULL;
+	if(LinkedList<T>::head == NULL){
+		LinkedList<T>::head = LinkedList<T>::last = newNode;
+	}else if(item < LinkedList<T>::head->data){
+		newNode->next = LinkedList<T>::head;
+		LinkedList<T>::head = newNode;
+	}else{
+		p = LinkedList<T>::head;
+		q = p->next;
+		while(q != NULL && q->data < item){
+			p = q;
+			q = q->next;
+		}
+		p->next = newNode;
+		newNode->next = q;
+	}
 }
 //template<class T>
 //void OrderedLinkedList<T>::deleteNode(T& item){
+//	node<T> *p, *q;
+//	if(LinkedList<T>::head == NULL){
+//		cerr<<"Flight is empty";
+//	}else if(LinkedList<T>::head == item){
+//		p = LinkedList<T>::head;
+//		LinkedList<T>::head = LinkedList<T>::head->next;
+//	}else{
+//		if(p != NULL){
+//			p = LinkedList<T>::head;
+//
+//		}else if(){
+//			Somewhere in here I need to check if q->data != item
+//		}
+//	}
+//}
 
 
 template <class T>
-bool OrderedLinkedList<T>::searchList(T& item){
-	if(LinkedList<T>::head == NULL)
+T& OrderedLinkedList<T>::searchList(T& item){
+//	if(LinkedList<T>::head == NULL)
 //		cerr<<"empty list";
-		cout<<endl;
-	else{
+//	else{
 		node<T> *p = LinkedList<T>::head;
-		while(p->data != item){
+		while(p != NULL && p->data != item){
 			p = p->next;
 		}
-
-	}
+		cerr<<"Passenger not found";
+		if(p != NULL){
+			return p->data;
+		}
+//		return false;
+//	}
 }
 
 
