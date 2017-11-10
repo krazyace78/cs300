@@ -1,3 +1,5 @@
+//Part 2 of this assignment was written in Visual Studio. 
+//The preprocessor directives may need to be adjusted if running with a different IDE
 #include "stdafx.h"
 #include <iostream>
 #include "LinkedStack.h"
