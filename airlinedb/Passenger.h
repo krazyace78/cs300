@@ -1,24 +1,22 @@
-
-#ifndef PASSENGER_H_
-#define PASSENGER_H_
+#pragma once
 #include <iostream>
 #include <string>
 #include <math.h>
 using namespace std;
 
-class Passenger{
+class Passenger {
 	string firstName, lastName, address, phoneNumber;
 
 public:
-	Passenger(){}
-	Passenger(string lastName){
+	Passenger() {}
+	Passenger(string lastName) {
 		this->lastName = lastName;
 	}
-	Passenger(string lastName, string firstName){
+	Passenger(string lastName, string firstName) {
 		this->lastName = lastName;
 		this->firstName = firstName;
 	}
-	Passenger(string firstName, string lastName, string address, string phoneNumber){
+	Passenger(string firstName, string lastName, string address, string phoneNumber) {
 		this->firstName = firstName;
 		this->lastName = lastName;
 		this->address = address;
@@ -36,64 +34,55 @@ public:
 	friend bool operator<(Passenger&, Passenger&);
 	friend ostream& operator<<(ostream&, Passenger&);
 	friend bool operator!=(Passenger&, Passenger&);
+	friend bool operator==(Passenger&, Passenger&);
 };
 //Getters and setters for all fields
-void Passenger::setFirstName(string firstName){
+void Passenger::setFirstName(string firstName) {
 	this->firstName = firstName;
 }
-string Passenger::getFirstName(){
+string Passenger::getFirstName() {
 	return firstName;
 }
-void Passenger::setLastName(string lastName){
+void Passenger::setLastName(string lastName) {
 	this->lastName = lastName;
 }
-string Passenger::getLastName(){
+string Passenger::getLastName() {
 	return lastName;
 }
-void Passenger::setAdress(string address){
+void Passenger::setAdress(string address) {
 	this->address = address;
 }
-string Passenger::getAdress(){
+string Passenger::getAdress() {
 	return address;
 }
-void Passenger::setPhoneNumber(string phoneNumber){
+void Passenger::setPhoneNumber(string phoneNumber) {
 	this->phoneNumber = phoneNumber;
 }
-string Passenger::getPhoneNumber(){
+string Passenger::getPhoneNumber() {
 	return phoneNumber;
 }
 
-//bool operator==(Passenger& p1, Passenger& p2){
-//	if((p1.getLastName() == p2.getLastName()) && (p1.getFirstName() == p2.getFirstName()){
-//
-//	}
-//}
-
-bool operator<(Passenger& p1, Passenger& p2){
-	if(p1.getLastName()[0] < p2.getLastName()[0]){
+bool operator<(Passenger& p1, Passenger& p2) {
+	if (p1.getLastName()[0] < p2.getLastName()[0]) {
 		return true;
-	}else{
+	}
+	else {
 		return false;
 	}
 }
 
-ostream& operator<<(ostream& os, Passenger& p){
-	cout<<p.getFirstName()<<" " <<p.getLastName()<<" ["<<p.getAdress()<<"] [+1"<<p.getPhoneNumber()<<"]";
+ostream& operator<<(ostream& os, Passenger& p) {
+	cout << p.getFirstName() << " " << p.getLastName() << " [" << p.getAdress() << "] [+1" << p.getPhoneNumber() << "]";
 	return os;
 }
 
-bool operator!=(Passenger& p1, Passenger& p2){
-
-	if((p1.getFirstName() != p2.getFirstName()) && (p1.getLastName() != p2.getLastName())){
-		return true;
-	}
-//Unclear on how to print out passenger flight #
-//	cout<<"Flight number: "<<endl;
-//	cout<<"First name: "<<p1.getFirstName()<<endl;
-//	cout<<"Last name: "<<p1.getLastName()<<endl;
-//	cout<<"Address: "<<p1.getAdress()<<endl;
-//	cout<<"Phone number: "<<p1.getPhoneNumber()<<endl;
-	return false;
+bool operator!=(Passenger& p1, Passenger& p2) {
+	return p1.getFirstName().compare(p2.getFirstName()) != 0;
 }
 
-#endif /* PASSENGER_H_ */
+bool operator ==(Passenger& p1, Passenger &p2) {
+	if (p1.getLastName() == p2.getLastName()) {
+		return true;
+	}
+	return false;
+}
