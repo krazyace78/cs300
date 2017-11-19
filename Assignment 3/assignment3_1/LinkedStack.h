@@ -1,6 +1,7 @@
 #ifndef LINKEDSTACK_H_
 #define LINKEDSTACK_H_
 #include <iostream>
+#include <assert.h>
 using namespace std;
 
 template <class T>
@@ -20,7 +21,7 @@ class LinkedStack{
       T pop();
       T stackTop();
       void destroy();
-      //~Stack();
+      ~LinkedStack();
 };
 //provide function implementations here
 template <class T>
@@ -55,19 +56,28 @@ T LinkedStack<T>::pop(){
 
 template <class T>
 T LinkedStack<T>::stackTop(){
-	return top->data;
+	assert(!isEmpty);
+	if(!isEmpty()){
+		return top->data;
+	}
 }
 
 template <class T>
 void LinkedStack<T>::destroy(){
 	node<T> *temp = top;
-	if(top == NULL){
-		cout<<"Stack is empty"<<endl;
-	}
+//	if(top == NULL){
+//		cout<<"Stack is empty"<<endl;
+//	}
 	while(top != NULL){
 		top = top->next;
 		delete temp;
 		temp = top;
 	}
 }
+
+template <class T>
+LinkedStack<T>::~LinkedStack(){
+	destroy();
+}
+
 #endif /* LINKEDSTACK_H_ */
