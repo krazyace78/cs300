@@ -1,6 +1,5 @@
-//Not printing every digit. If the sum of both numbers is 10, it will print out 2 digits. I don't account for that
-//when printing out the sum. My sum stack is the same size as the number stacks
-
+//This program asks the user to input 2 very large numbers, adds them together using
+//a stack database structure, and returns the sum.
 #include <iostream>
 #include "LinkedStack.h"
 using namespace std;
@@ -31,8 +30,7 @@ int main() {
 		number2.push(charToInt2);
 		number2Count++;
 	}
-	cout<<"number1count = "<<number1Count<<endl;
-	cout<<"number2count = "<<number2Count<<endl;
+//The following if/else block checks to see which number of the two is larger, and adds/prints the sums accordingly.
 	if(number1Count > number2Count){
 		while(!number1.isEmpty()){
 			int sumNumbers = number1.pop() + number2.pop();
@@ -44,6 +42,7 @@ int main() {
 			sum.push(sumNumbers);
 		}
 	}
+//Pops and prints all values stored in the sum stack
 	while(!sum.isEmpty()){
 		cout<<sum.pop();
 	}
