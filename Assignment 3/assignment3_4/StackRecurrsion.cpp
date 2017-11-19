@@ -2,27 +2,16 @@
 #include "LinkedStack.h"
 using namespace std;
 
-LinkedStack<int> firstStack;
-LinkedStack<int> stackToReverse;
-int counter = 0;
-
 void reverseDigits(int);
 
-void reverseDigits(int x){
-	int pushValue;
-	int y;
-	if(x == 0){
-		while(firstStack.isEmpty()){
-		y = firstStack.pop();
-		stackToReverse.push(y);
-		}
-	}
-	else{
-		pushValue = x % 10;
-		x /= 10;
-		firstStack.push(pushValue);
-		reverseDigits(x);
-		cout<<stackToReverse.pop();
+void reverseDigits(int number){
+	if(number == 0){
+		return;
+	}else{
+		int onesDigit = number;
+		onesDigit %= 10;
+		cout<<onesDigit;
+		reverseDigits(number / 10);
 	}
 }
 
