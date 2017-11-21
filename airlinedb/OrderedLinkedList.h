@@ -58,28 +58,29 @@ void OrderedLinkedList<T>::deleteNode(T& item) {
 			q = q->next;
 		}
 		if (q != NULL) {
+			if (q->next == NULL)
+				p->next = NULL;
 			p->next = q->next;
 			delete q;
 		}
 	}
 }
-
+//Unable to search other flights. Only able to search flight100
 template <class T>
 T* OrderedLinkedList<T>::searchList(T& item) {
 	if (LinkedList<T>::head == NULL) {
-		cerr << "Empty Flight" << endl;
+		cout << "Empty Flight" << endl;
 	}
 	node<T> *p = LinkedList<T>::head;
-	if (p->data == item) {
+	/*if (p->data == item) {
 		return &p->data;
-	}
+	}*/
 	while (p != NULL && p->data != item) {
 		p = p->next;
 	}
 	if (p != NULL) {
 		return &p->data;
 	}
-	else
-		cerr << "Passenger not found";
+	cout << "Passenger not found";
 	return NULL;
 }
